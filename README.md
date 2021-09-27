@@ -173,12 +173,12 @@ The file should look like this:
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+    provider = "sqlite"
+    url      = "file:./dev.db"
 }
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 model Product {
@@ -224,35 +224,33 @@ Everything looks great. Amazing work!
 Now it’s time to create a controller for your products.
 
 ```typescript:title=src/products/products.controller.ts
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { ProductDto } from './product.dto';
 import { ApiDataInterceptor, ApiDatumInterceptor } from '../api-responses/api-responses.interceptor';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService) {}
 
-  @Get()
-  @UseInterceptors(ApiDataInterceptor)
-  findAll(): Promise<ProductDto[]> {
-    return this.prismaService.product.findMany();
-  }
+    @Get()
+    findAll(): Promise<ProductDto[]> {
+      return this.prismaService.product.findMany();
+    }
 
-  @Get('/:id')
-  @UseInterceptors(ApiDatumInterceptor)
-  findById(@Param('id', ParseIntPipe) id: number): Promise<ProductDto> {
-    return this.prismaService.product.findUnique({
-      where: { id },
-    });
-  }
+    @Get('/:id')
+    findById(@Param('id', ParseIntPipe) id: number): Promise<ProductDto> {
+        return this.prismaService.product.findUnique({
+            where: { id },
+        });
+    }
 
-  @Post()
-  create(
-    @Body() { name, price, description }: ProductDto,
-  ): Promise<ProductDto> {
-    return this.prismaService.product.create({ data: { name, price, description }});
-  }
+    @Post()
+    create(
+        @Body() { name, price, description }: ProductDto,
+    ): Promise<ProductDto> {
+        return this.prismaService.product.create({ data: { name, price, description }});
+    }
 }
 ```
 ### 5. Create the `Product` module
@@ -268,9 +266,9 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [ProductsController],
-  providers: [PrismaService]
+    imports: [PrismaModule],
+    controllers: [ProductsController],
+    providers: [PrismaService]
 })
 export class ProductsModule {}
 ```
@@ -284,9 +282,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ProductsModule } from './products/products.module';
 
 @Module({
-  imports: [PrismaModule, ProductsModule],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [PrismaModule, ProductsModule],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}
 
@@ -305,14 +303,14 @@ The file should look like this:
 
 ```typescript:title=src/api-responses/api-responses.dto.ts
 export class DataResponseDto<T> {
-  data: T[];
-  _count: number;
-  _self: string;
+    data: T[];
+    _count: number;
+    _self: string;
 }
 
 export class DatumResponseDto<T> {
-  datum: T;
-  _self: string;
+    datum: T;
+    _self: string;
 }
 ```
 #### 7.2.	Create the `api-responses` interceptor
@@ -365,28 +363,28 @@ import { ProductDto } from './product.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService) {}
 
-  @Get()
-+  @UseInterceptors(ApiDataInterceptor)
-  findAll(): Promise<ProductDto[]> {
-    return this.prismaService.product.findMany();
-  }
+    @Get()
++   @UseInterceptors(ApiDataInterceptor)
+    findAll(): Promise<ProductDto[]> {
+        return this.prismaService.product.findMany();
+    }
 
-  @Get('/:id')
-+  @UseInterceptors(ApiDatumInterceptor)
-  findById(@Param('id', ParseIntPipe) id: number): Promise<ProductDto> {
-    return this.prismaService.product.findUnique({
-      where: { id },
-    });
-  }
+    @Get('/:id')
++   @UseInterceptors(ApiDatumInterceptor)
+    findById(@Param('id', ParseIntPipe) id: number): Promise<ProductDto> {
+        return this.prismaService.product.findUnique({
+            where: { id },
+        });
+    }
 
-  @Post()
-  create(
-    @Body() { name, price, description }: ProductDto,
-  ): Promise<ProductDto> {
-    return this.prismaService.product.create({ data: { name, price, description }});
-  }
+    @Post()
+    create(
+        @Body() { name, price, description }: ProductDto,
+    ): Promise<ProductDto> {
+        return this.prismaService.product.create({ data: { name, price, description }});
+    }
 }
 ```
 
