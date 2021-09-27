@@ -75,7 +75,7 @@ The wrapper will:
 <tr>
 <td>
 
-```json:title="Get many products"
+```json
 {
   "data": [
     {
@@ -98,7 +98,7 @@ The wrapper will:
 </td>
 <td>
 
-```json:title="Get single product"
+```json
 {
     "datum": {
         "id": 1,
