@@ -39,7 +39,7 @@ This sequence diagram shows a simulated flow of the request when using the **Int
 
 Using this pattern makes it possible to change a request/response without altering their core code. It also improves code modularity and maintainability. 
 
-You can find more benefits of using Design Patterns in the [5 Reasons to finally learn Design Patterns](https://www.oreilly.com/content/5-reasons-to-finally-learn-design-patterns/) website.
+You can find more benefits of using Design Patterns on the [5 Reasons to finally learn Design Patterns](https://www.oreilly.com/content/5-reasons-to-finally-learn-design-patterns/) website.
 
 ## When to use it
 
@@ -119,7 +119,7 @@ The wrapper will:
 
 ## Prerequisites
 
-This tutorial assumes you have a working copy of `NestJS` with `Prisma`. Medium level knowledge in those technologies is recommended but not essential.
+This tutorial assumes you have a working copy of `NestJS` with `Prisma`. Intermediate level knowledge in those technologies is recommended but not essential.
 
 You can use the [NestJS Prisma starter kit](https://github.com/fivethree-team/nestjs-prisma-starter) to get everything up and running quickly.
 
