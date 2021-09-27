@@ -2,7 +2,7 @@
 
 This document gives a high-level overview of the **Intercepting Filter Design Pattern** and its usage. 
 
-For a practical introduction, there’s also a `NestJS` + `Prisma` **tutorial** ready for you in the [Tutorial: Interceptor on NestJS + Prisma](#tutorial-interceptor-on-nestjs+prisma) section.
+For a practical introduction, there’s also a `NestJS` and `Prisma` **tutorial** ready for you in the [Tutorial: Interceptor on NestJS and Prisma](#tutorial-interceptor-on-nestjs-and-prisma) section.
 
 
 ## Contents
