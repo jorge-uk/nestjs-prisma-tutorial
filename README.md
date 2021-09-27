@@ -68,40 +68,51 @@ The wrapper will:
 
 ### How should the response look like?
 
-#### Get many items
-```json
+<table>
+<tr>
+<td> Get many products </td> <td> Get single product </td>
+</tr>
+<tr>
+<td>
+
+```json:title="Get many products"
 {
-    "data": [
-        {
-            "id": 1,
-            "name": "Goku Plush Toy",
-            "price": 29.99,
-            "description": "Goku Plush figure. Original and licensed."
-        },
-        {
-            "id": 2,
-            "name": "Piccolo Plush Toy",
-            "price": 19.99,
-            "description": "Piccolo Plush figure. Copycat”
-        },
+  "data": [
+    {
+      "id": 1,
+      "name": "Goku Plush Toy",
+      "price": 29.99,
+      "description": "Goku Plush figure..."
+    },
+    {
+      "id": 2,
+      "name": "Piccolo Plush Toy",
+      "price": 19.99,
+      "description": "Piccolo Plush figure..." 
+    },
     ],
     "_self": "/products",
     "_count": 2
 }
 ```
-#### Get single item
-```json
+</td>
+<td>
+
+```json:title="Get single product"
 {
     "datum": {
         "id": 1,
         "name": "Goku Plush Toy",
         "price": 29.99,
-        "description": "Goku Plush figure. Original and 
-        licensed."
+        "description": "Goku Plush figure..."
     },
     "_self": "/products/1"
 }
 ```
+
+</td>
+</tr>
+</table>
 
 ### Prerequisites
 
