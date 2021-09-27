@@ -28,7 +28,7 @@ When implemented correctly, the code will likely be easier to read, improving kn
 
 The **Intercepting Filter Design Pattern** outlines how to extend or filter data during the software processing cycle. It works by adding a processing step – often called *filter* or *interceptor* – before/after incoming requests or outgoing responses. 
 
-We can implement this pattern in different frameworks/languages. It is also a form of [Aspect-Oriented Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/march/aop-aspect-oriented-programming-enables-better-code-encapsulation-and-reuse) because its design aims for modularity and separation of concerns - among other reasons which we won't explore in detail. 
+We can implement this pattern in different frameworks/languages. It is also a form of [Aspect-Oriented Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/march/aop-aspect-oriented-programming-enables-better-code-encapsulation-and-reuse) because its design aims for modularity and separation of concerns - among other reasons this document won't explore in detail. 
 
 This sequence diagram shows a simulated flow of the request when using the **Intercepting Filter Design Pattern**:
 ![Intercepting Filter Design Pattern](img/sequenceDiagram.png "Sequence diagram of the Intercepting Filter Design Pattern")
@@ -49,7 +49,7 @@ Some examples of its usage are:
 - Altering a response property to meet the requirements of an external entity.
 - Augmenting an API response with the caller endpoint, response object type, and the total number of items returned from a query. **The following tutorial will explore this example**.
 
-## Tutorial: Interceptor on NestJS and Prisma
+## Tutorial: Interceptor on `NestJS` and `Prisma`
 
 This **tutorial** shows how to implement the **Intercepting Filter Design Pattern** in `NestJS` by using the `UseInterceptor` decorator and a single `Product` entity. You will use the following stack:
 
