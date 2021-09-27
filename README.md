@@ -2,7 +2,7 @@
 
 This document gives a high-level overview of the **Intercepting Filter Design Pattern** and its usage. 
 
-For a practical introduction, there’s also a `NestJS` and `Prisma` **tutorial** ready for you in the [Tutorial: Interceptor on NestJS and Prisma](#tutorial-interceptor-on-nestjs-and-prisma) section.
+For a **practical introduction**, there is also a `NestJS` and `Prisma` **tutorial** ready for you in the [Tutorial: Interceptor on NestJS and Prisma](#tutorial-interceptor-on-nestjs-and-prisma) section.
 
 
 ## Contents
@@ -28,12 +28,12 @@ When implemented correctly, the code will likely be easier to read, improving kn
 
 The **Intercepting Filter Design Pattern** outlines how to extend or filter data during the software processing cycle. It works by adding a processing step – often called *filter* or *interceptor* – before/after incoming requests or outgoing responses. 
 
-We can implement this pattern in different frameworks/languages. It is also a form of [Aspect-Oriented Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/march/aop-aspect-oriented-programming-enables-better-code-encapsulation-and-reuse) because its design aims for modularity and separation of concerns - among other reasons this document won't explore in detail. 
+We can implement this pattern in different frameworks or languages. It is also a form of [Aspect-Oriented Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/march/aop-aspect-oriented-programming-enables-better-code-encapsulation-and-reuse) because its design aims for modularity and separation of concerns. 
 
 This sequence diagram shows a simulated flow of the request when using the **Intercepting Filter Design Pattern**:
 ![Intercepting Filter Design Pattern](img/sequenceDiagram.png "Sequence diagram of the Intercepting Filter Design Pattern")
 
-> **_NOTE:_**  The diagram only depicts high level object interactions for the interceptor. It does not include how the object is affected by services in `NestJS` and external packages like `Prisma`.
+> **_NOTE:_**  The diagram only depicts high level object interactions. It does not include how the object is affected by services or modules.
 
 ## Benefits of its usage
 
@@ -51,21 +51,23 @@ Some examples of its usage are:
 
 ## Tutorial: Interceptor on `NestJS` and `Prisma`
 
-This **tutorial** shows how to implement the **Intercepting Filter Design Pattern** in `NestJS` by using the `UseInterceptor` decorator and a single `Product` entity. You will use the following stack:
+This **tutorial** shows how to implement the **Intercepting Filter Design Pattern** in `NestJS` by using the `UseInterceptor` decorator. 
+
+You will work with the following stack:
 
 - [**NestJS**](https://docs.nestjs.com/): `Node.js` framework.
 - [**Prisma Client**](https://www.prisma.io/docs/concepts/components/prisma-client): Database ORM.                  
 - [**Prisma Migrate**](https://www.prisma.io/docs/concepts/components/prisma-migrate): Database migrations.   
 - [**SQLite**](https://www.sqlite.org/index.html): Local, file-based SQL database.
 
-You will simulate a products API with only three methods. In addition to `NestJS`, you will also use `Prisma` to create and connect to a local database. 
+At the of this tutorial, you will have a products API with three methods: `create`, `findOne` and `findMany`. The products API will use `Prisma` to create and connect to a local database.
 
-The aim is to intercept the response from `Prisma` and wrap it into a custom object response. 
+The aim is to intercept the response from `Prisma` and wrap it into a custom object. 
 
 The wrapper will:
 -	Use `datum` or `data` depending on the type of response.
--	Contain a `_count` property for a multiple items response.
--	Contain a `_self` property with the queried endpoint segment.
+-	Have a `_count` property for a multiple items response.
+-	Have a `_self` property with the queried endpoint segment.
 
 ### How should the response look like?
 
@@ -151,15 +153,18 @@ Run:
 npm start
 ```
 
-Well done! Now you can navigate to `http://localhost:3000` in your browser to explore your `NestJS` application. At this point you will only see the text: *Hello World!* 
+Well done! Now you can navigate to `http://localhost:3000` in your browser to explore your `NestJS` application. 
+  
+If you see the text: *Hello World!*, give yourself a pat on the back! your NestJS application is working. 
 </details>
 
 ## Getting started
 
-### 1. Create the `Product` model in your schema and run your first migration
+### 1. Create the `Product` model in your schema
 
-It’s time to execute your first migration, you can follow the steps in the [Prisma Docs](https://www.prisma.io/docs/concepts/components/prisma-migrate) 
-This tutorial uses a local `SQLite`, file-based database. **Pay special attention to this** and remember this code isn’t production-ready.
+It’s time to execute your first migration. You can follow the steps in the [Prisma Docs](https://www.prisma.io/docs/concepts/components/prisma-migrate).
+
+This tutorial uses a local `SQLite`, file-based database. **Pay special attention to this**, and remember this code isn’t production-ready.
 
 The file should look like this:
 
@@ -187,7 +192,9 @@ model Product {
 
 ### 2. Create the `Prisma` module and controller
 
-After updating your schema, you will need to generate the `Prisma` module and controller by running: 
+After updating your schema, you will need to generate the `Prisma` module and controller.
+
+Run the following command in your console: 
 ```
 nest g module prisma && nest g service prisma
 ```
@@ -196,11 +203,11 @@ nest g module prisma && nest g service prisma
 
 Creating a `DTO (Data Transfer Object)` will help you ensure the structure remains tidy moving forward.
 
-> **_NOTE:_**  If you want to know more about `DTOs`, you can read more [Martin Fowler's page](https://martinfowler.com/eaaCatalog/dataTransferObject.html).
+> **_NOTE:_**  If you want to know more about `DTOs`, [Martin Fowler's page](https://martinfowler.com/eaaCatalog/dataTransferObject.html) has extensive information about the topic.
 
-The `Product DTO` will be the object carrying the `Product` data. 
+The `Product DTO` will be the object carrying the product data. 
 
-Create a `Products DTO` as follows:
+The file should look like this:
 ```typescript:title=src/products/product.dto.ts
 export class ProductDto {
     id: number;
@@ -210,11 +217,11 @@ export class ProductDto {
 }
 ```
 
-### 4. Create the `Products` controller
+### 4. Create the `Product` controller
 
 Everything looks great. Amazing work! 
 
-Now it’s time to create a controller for your `Products`.
+Now it’s time to create a controller for your products.
 
 ```typescript:title=src/products/products.controller.ts
 import { Body, Controller, Get, Param, ParseIntPipe, Post, UseInterceptors } from '@nestjs/common';
@@ -248,9 +255,9 @@ export class ProductsController {
   }
 }
 ```
-### 5. Create the `Products` module
+### 5. Create the `Product` module
 
-With the `Products` controller in place, the only remaining piece is the module for your `Products` endpoint. 
+With the `Products` controller in place, it's time to create the module for your endpoint. 
 
 The file should look like this:
 
@@ -284,17 +291,18 @@ import { ProductsModule } from './products/products.module';
 export class AppModule {}
 
 ```
-### 7.	Build the `Api-responses` interceptor
+### 7.	Build the `api-responses` interceptor
 
 This is where the fun starts. You will need an interceptor responsible for altering the response. The interceptor will live in a new folder called `api-responses`.
 
-#### 7.1.	Create the `data DTO` and `datum DTO`
+#### 7.1.	Create the `Data DTO` and `Datum DTO`
 
 After creating the `api-responses` folder, you will need a `DTO` for your two different types of responses:
 -	`Data`: Used for requests that return multiple products. This will include a count with the number of products retrieved.
--	`Datum`: Used for requests that return single products.
+-	`Datum`: Used for requests that return a single product.
 
 The file should look like this:
+
 ```typescript:title=src/api-responses/api-responses.dto.ts
 export class DataResponseDto<T> {
   data: T[];
@@ -307,7 +315,7 @@ export class DatumResponseDto<T> {
   _self: string;
 }
 ```
-#### 7.2.	Create the `Api-responses` interceptor
+#### 7.2.	Create the `api-responses` interceptor
 
 The interceptor will use the `DTO` and return the augmented response.
 
@@ -384,13 +392,13 @@ export class ProductsController {
 
 ### 9.	Test your application
 
-Well done! By now your interceptor should be working like a treat.
+Well done! By now your interceptor should be working perfectly.
 
 You can make requests to your API using [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/), your console, or any other API request platform to test endpoints.
 
-An example of what you can do:
+This is an example of what you can do:
 
-- Make a **POST** request to `localhost:3000/products` with this body:
+1. Make a **POST** request to `localhost:3000/products` with this body:
 ```json
 {
     "name": "Goku Plush Toy",
@@ -399,7 +407,7 @@ An example of what you can do:
 }
 ```
 
-- Make a **GET** request to `localhost:3000/products` and it should respond with:
+2. Make a **GET** request to `localhost:3000/products` and it should respond with:
 ```json
 {
     "data": [
