@@ -30,8 +30,10 @@ The **Intercepting Filter Design Pattern** outlines how to extend or filter data
 
 We can implement this pattern in different frameworks/languages. It is also a form of [Aspect-Oriented Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/march/aop-aspect-oriented-programming-enables-better-code-encapsulation-and-reuse) because its design aims for modularity and separation of concerns - among other reasons which we won't explore in detail. 
 
-Sequence diagram of the **Intercepting Filter Design Pattern**:
-![Intercepting Filter Design Pattern](img/sequence.png "Sequence diagram of the Intercepting Filter Design Pattern")
+This sequence diagram shows a simulated flow of the request when using the **Intercepting Filter Design Pattern**:
+![Intercepting Filter Design Pattern](img/sequenceDiagram.png "Sequence diagram of the Intercepting Filter Design Pattern")
+
+> **_NOTE:_**  The diagram only depicts high level object interactions for the interceptor. It does not include how the object is affected by services in `NestJS` and external packages like `Prisma`.
 
 ## Benefits of its usage
 
