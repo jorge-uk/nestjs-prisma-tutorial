@@ -114,17 +114,15 @@ The wrapper will:
 </tr>
 </table>
 
-### Prerequisites
+## Prerequisites
 
 This tutorial assumes you have a working copy of `NestJS` with `Prisma`. Medium level knowledge in those technologies is recommended but not essential.
 
 You can use the [NestJS Prisma starter kit](https://github.com/fivethree-team/nestjs-prisma-starter) to get everything up and running quickly.
 
-
-
 <details><summary>Alternatively, you can <strong>follow these steps</strong> to gain more exposure to the technology stack.</summary>
 
-#### 1. Install `NestJS CLI` and create your application 
+### 1. Install `NestJS CLI` and create your application 
 
 Run the following commands in your console:
 
@@ -135,7 +133,7 @@ nest new nestjs-prisma-tutorial
 
 > **_NOTE:_**  Visit the [NestJS First Steps Guide](https://docs.nestjs.com/first-steps) for more information about the `NestJS` installation process.
 
-#### 2. Install `Prisma` and `Prisma Client`
+### 2. Install `Prisma` and `Prisma Client`
 
 Run the following commands:
 
@@ -144,7 +142,7 @@ npm add @prisma/client && npm install prisma --save-dev
 cd src && npx prisma init
 ```
 
-#### 3. Start your `NestJS` application:
+### 3. Start your `NestJS` application:
 
 Run:
 
@@ -155,11 +153,9 @@ npm start
 Well done! Now you can navigate to `http://localhost:3000` in your browser to explore your `NestJS` application. At this point you will only see the text: *Hello World!* 
 </details>
 
-### Getting started
+## Getting started
 
-It's time to create a Nexus' `objectType` for the `GraphQL` query. By now, you should have a `GraphQL` API and a seeded `Pokemon` table running in `Apollo Server` 
-
-#### 1. Create the `Product` model in your schema and run your first migration
+### 1. Create the `Product` model in your schema and run your first migration
 
 It’s time to execute your first migration, you can follow the steps in the [Prisma Docs](https://www.prisma.io/docs/concepts/components/prisma-migrate) 
 This tutorial uses a local `SQLite`, file-based database. **Pay special attention to this** and remember this code isn’t production-ready.
@@ -188,14 +184,14 @@ model Product {
 
 ```
 
-#### 2. Create the `Prisma` module and controller
+### 2. Create the `Prisma` module and controller
 
 After updating your schema, you will need to generate the `Prisma` module and controller by running: 
 ```
 nest g module prisma && nest g service prisma
 ```
 
-#### 3. Create the `Product DTO`
+### 3. Create the `Product DTO`
 
 Creating a `DTO (Data Transfer Object)` will help you ensure the structure remains tidy moving forward.
 
@@ -213,7 +209,7 @@ export class ProductDto {
 }
 ```
 
-#### 4. Create the `Products` controller
+### 4. Create the `Products` controller
 
 Everything looks great. Amazing work! 
 
@@ -251,7 +247,7 @@ export class ProductsController {
   }
 }
 ```
-#### 5. Create the `Products` module
+### 5. Create the `Products` module
 
 With the `Products` controller in place, the only remaining piece is the module for your `Products` endpoint. 
 
@@ -270,7 +266,7 @@ import { PrismaService } from '../prisma/prisma.service';
 })
 export class ProductsModule {}
 ```
-#### 6.	Add the `ProductsModule` to the `app.module.ts`
+### 6.	Add the `ProductsModule` to the `app.module.ts`
 
 ```typescript:title=src/app.module.ts
 import { Module } from '@nestjs/common';
@@ -287,11 +283,11 @@ import { ProductsModule } from './products/products.module';
 export class AppModule {}
 
 ```
-#### 7.	Build the `Api-responses` interceptor
+### 7.	Build the `Api-responses` interceptor
 
 This is where the fun starts. You will need an interceptor responsible for altering the response. The interceptor will live in a new folder called `api-responses`.
 
-##### 7.1.	Create the `data DTO` and `datum DTO`
+#### 7.1.	Create the `data DTO` and `datum DTO`
 
 After creating the `api-responses` folder, you will need a `DTO` for your two different types of responses:
 -	`Data`: Used for requests that return multiple products. This will include a count with the number of products retrieved.
@@ -310,7 +306,7 @@ export class DatumResponseDto<T> {
   _self: string;
 }
 ```
-##### 7.2.	Create the `Api-responses` interceptor
+#### 7.2.	Create the `Api-responses` interceptor
 
 The interceptor will use the `DTO` and return the augmented response.
 
@@ -346,7 +342,7 @@ export class ApiDatumInterceptor<T> implements NestInterceptor<T, DatumResponseD
     }
 }
 ```
-#### 8.	Apply the interceptor in the `Products` controller using decorators
+### 8.	Apply the interceptor in the `Products` controller using decorators
 
 The final touch is to import and use the interceptors from `api-responses` in your `Products` controller:
 
@@ -385,7 +381,7 @@ export class ProductsController {
 }
 ```
 
-#### 9.	Test your application
+### 9.	Test your application
 
 Well done! By now your interceptor should be working like a treat.
 
@@ -417,7 +413,6 @@ An example of what you can do:
     "_count": 2
 }
 ```
-
 
 ## Next steps
 
