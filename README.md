@@ -122,11 +122,7 @@ npm i -g @nestjs/cli
 nest new nestjs-prisma-tutorial
 ```
 
----
-**NOTE**
-Visit the [NestJS First Steps Guide](https://docs.nestjs.com/first-steps) for more information about the `NestJS` installation process.
-
----
+> **_NOTE:_**  Visit the [NestJS First Steps Guide](https://docs.nestjs.com/first-steps) for more information about the `NestJS` installation process.
 
 #### 2. Install `Prisma` and `Prisma Client`
 
@@ -192,12 +188,7 @@ nest g module prisma && nest g service prisma
 
 Creating a `DTO (Data Transfer Object)` will help you ensure the structure remains tidy moving forward.
 
----
-**NOTE**
-If you want to know more about `DTOs`, you can read more [Martin Fowler's page](https://martinfowler.com/eaaCatalog/dataTransferObject.html).
-
----
-
+> **_NOTE:_**  If you want to know more about `DTOs`, you can read more [Martin Fowler's page](https://martinfowler.com/eaaCatalog/dataTransferObject.html).
 
 The `Product DTO` will be the object carrying the `Product` data. 
 
