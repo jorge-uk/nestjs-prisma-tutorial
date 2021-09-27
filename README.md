@@ -420,5 +420,5 @@ This is an example of what you can do:
 ## Next steps
 
 - Read more about [Interceptors in NestJS](https://docs.nestjs.com/interceptors).
-- Read more about **Software Design Patterns** in [The Catalog of Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/) website by Martin Fowler.
+- Read more about **Software Design Patterns** on [The Catalog of Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/) website by Martin Fowler.
 
