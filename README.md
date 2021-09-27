@@ -246,9 +246,7 @@ export class ProductsController {
     }
 
     @Post()
-    create(
-        @Body() { name, price, description }: ProductDto,
-    ): Promise<ProductDto> {
+    create(@Body() { name, price, description }: ProductDto): Promise<ProductDto> {
         return this.prismaService.product.create({ data: { name, price, description }});
     }
 }
@@ -380,9 +378,7 @@ export class ProductsController {
     }
 
     @Post()
-    create(
-        @Body() { name, price, description }: ProductDto,
-    ): Promise<ProductDto> {
+    create(@Body() { name, price, description }: ProductDto ): Promise<ProductDto> {
         return this.prismaService.product.create({ data: { name, price, description }});
     }
 }
