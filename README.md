@@ -60,7 +60,7 @@ You will work with the following stack:
 - [**Prisma Migrate**](https://www.prisma.io/docs/concepts/components/prisma-migrate): Database migrations.   
 - [**SQLite**](https://www.sqlite.org/index.html): Local, file-based SQL database.
 
-At the end of this tutorial, you will have a products API with three methods: `create`, `findById` and `findMany`. The products API will use `Prisma` to create and connect to a local database.
+At the end of this tutorial, you will have a `Products API` with three methods: `create`, `findById` and `findMany`. The products API will use `Prisma` to create and connect to a local database.
 
 The aim is to intercept the response from `Prisma` and wrap it into a custom object. 
 
