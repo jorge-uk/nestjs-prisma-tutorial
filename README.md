@@ -11,11 +11,10 @@ For a practical introduction, there’s also a `NestJS` + `Prisma` **tutorial** 
 - [What is the Intercepting Filter Design Pattern?](#what-is-the-intercepting-filter-design-pattern)
 - [Benefits of its usage](#benefits-of-its-usage)
 - [When to use it](#when-to-use-it)
-- [Tutorial: Interceptor on NestJS + Prisma](#tutorial-interceptor-on-nestjs+prisma)
-  - [How should the response look like?](#how-should-the-response-look-like?)
-  - [Prerequisites](#prerequisites)
-  - [Getting started](#getting-started)
-  - [Next steps](#next-steps)
+- [Tutorial: Interceptor on NestJS and Prisma](#tutorial-interceptor-on-nestjs-and-prisma)
+- [Prerequisites](#prerequisites)
+- [Getting started](#getting-started)
+- [Next steps](#next-steps)
 
 ## Introduction
 
@@ -48,7 +47,7 @@ Some examples of its usage are:
 - Altering a response property to meet the requirements of an external entity.
 - Augmenting an API response with the caller endpoint, response object type, and the total number of items returned from a query. **The following tutorial will explore this example**.
 
-## Tutorial - Interceptor on NestJS + Prisma
+## Tutorial: Interceptor on NestJS and Prisma
 
 This **tutorial** shows how to implement the **Intercepting Filter Design Pattern** in `NestJS` by using the `UseInterceptor` decorator and a single `Product` entity. You will use the following stack:
 
