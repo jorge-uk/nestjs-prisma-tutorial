@@ -9,7 +9,7 @@ For a practical introduction, there’s also a `NestJS` + `Prisma` **tutorial** 
 
 - [Introduction](#introduction)
 - [What is the Intercepting Filter Design Pattern?](#what-is-the-intercepting-filter-design-pattern)
-  - [Benefits of its usage](#benefits-of-its-usage)
+- [Benefits of its usage](#benefits-of-its-usage)
 - [When to use it](#when-to-use-it)
 - [Tutorial: Interceptor on NestJS + Prisma](#tutorial-interceptor-on-nestjs+prisma)
   - [How should the response look like?](#how-should-the-response-look-like?)
@@ -34,7 +34,7 @@ We can implement this pattern in different frameworks/languages. It is also a fo
 Sequence diagram of the **Intercepting Filter Design Pattern**:
 ![Intercepting Filter Design Pattern](img/sequence.png "Sequence diagram of the Intercepting Filter Design Pattern")
 
-### Benefits of its usage
+## Benefits of its usage
 
 Using this pattern makes it possible to change a request/response without altering their core code. It also improves code modularity and maintainability. 
 
